@@ -4,6 +4,9 @@ A minimal, frosted-glass style new tab homepage extension for Microsoft Edge.
 
 [中文说明](#中文说明)
 
+
+<img width="1914" height="987" alt="Snipaste_2026-08-27_21-39-15" src="https://github.com/user-attachments/assets/96293a19-cf57-4cc6-bc65-93b8b0cbb663" />
+
 ---
 
 ## ✨ Features
@@ -116,6 +119,3 @@ MIT License — feel free to use, modify, and share.
 4. 选择本项目文件夹
 5. 打开新标签页即可使用
 
-### 打包
-
-在 `edge://extensions/` 页面点击「打包扩展」，选择项目文件夹即可生成 `.crx` 安装包和 `.pem` 私钥文件。
