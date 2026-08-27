@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Kat-home",
+  "version": "1.0.0",
+  "description": "A minimal frosted-glass new tab homepage with clock, search, custom nav and settings.",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://suggestion.baidu.com/*",
+    "https://sp1.baidu.com/*"
+  ],
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  },
+  "icons": {
+    "128": "icon128.png"
+  }
+}

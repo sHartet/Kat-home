@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kat-home</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-layer" id="bgLayer"></div>
+
+  <main class="container">
+    <!-- 1. Clock -->
+    <section class="clock-card">
+      <span class="its-text">It's</span>
+      <span class="time-text" id="timeText">00:00</span>
+    </section>
+
+    <!-- 2. Search -->
+    <section class="search-row">
+      <div class="search-box">
+        <button class="engine-btn" id="engineBtn" title="切换搜索引擎">
+          <span class="engine-icon" id="engineIcon">必应</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <input
+          type="text"
+          class="search-input"
+          id="searchInput"
+          placeholder="输入关键词搜索..."
+          autocomplete="off"
+        />
+        <button class="search-submit" id="searchSubmit" title="搜索">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="engine-menu hidden" id="engineMenu">
+        <button data-engine="bing" class="engine-option active">
+          <span class="engine-dot bing"></span>必应
+        </button>
+        <button data-engine="google" class="engine-option">
+          <span class="engine-dot google"></span>谷歌
+        </button>
+        <button data-engine="baidu" class="engine-option">
+          <span class="engine-dot baidu"></span>百度
+        </button>
+      </div>
+
+      <div class="suggestions-menu hidden" id="suggestionsMenu"></div>
+    </section>
+
+    <!-- 3. Navigation -->
+    <section class="nav-card" id="navCard">
+      <div class="nav-grid" id="navGrid"></div>
+    </section>
+  </main>
+
+  <!-- 4. Settings button -->
+  <button class="settings-btn" id="settingsBtn" title="设置">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="3"></circle>
+      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+    </svg>
+  </button>
+
+  <!-- Settings panel -->
+  <div class="settings-panel hidden" id="settingsPanel">
+    <div class="settings-card">
+      <div class="settings-header">
+        <h2>设置</h2>
+        <button class="close-btn" id="closeSettings" title="关闭">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="settings-body">
+        <div class="setting-group">
+          <label class="setting-label">默认搜索引擎</label>
+          <div class="engine-selector" id="defaultEngineSelector">
+            <button data-engine="bing" class="engine-chip active">必应</button>
+            <button data-engine="google" class="engine-chip">谷歌</button>
+            <button data-engine="baidu" class="engine-chip">百度</button>
+          </div>
+        </div>
+
+        <div class="setting-group">
+          <label class="setting-label">自定义壁纸</label>
+          <div class="wallpaper-options">
+            <label class="file-btn">
+              <input type="file" id="wallpaperFile" accept="image/*" />
+              <span>本地图片</span>
+            </label>
+            <input type="text" class="url-input" id="wallpaperUrl" placeholder="或输入图片 URL" />
+          </div>
+        </div>
+
+        <div class="setting-group">
+          <label class="setting-label">网址导航</label>
+          <div class="nav-editor" id="navEditor"></div>
+          <button class="add-nav-btn" id="addNavBtn">+ 添加网址</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
