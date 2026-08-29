@@ -1,121 +1,101 @@
 # Kat-home
 
-A minimal, frosted-glass style new tab homepage extension for Microsoft Edge.
-
-[中文说明](#中文说明)
-
+一个适用于 Microsoft Edge 的磨砂玻璃风格新标签页扩展。
 
 <img width="1914" height="987" alt="Snipaste_2026-08-27_21-39-15" src="https://github.com/user-attachments/assets/96293a19-cf57-4cc6-bc65-93b8b0cbb663" />
-
 ---
 
-## ✨ Features
+## ✨ 功能特性
 
-- **Clock** — Large "It's HH:mm" time display in the top-left corner.
-- **Search Box** — Frosted-glass search bar with rounded corners.
-  - Switch between Bing, Google, and Baidu.
-  - Live search suggestions powered by Baidu.
-- **Custom Navigation** — One-column quick-link panel; add, edit, or remove sites in settings.
-- **Settings** — Bottom-left settings button lets you customize:
-  - Default search engine
-  - Wallpaper (local image or image URL)
-  - Custom navigation links
-- **Flat & Glassmorphism Design** — Unified rounded corners, translucent backgrounds, and subtle shadows.
+- **时间** — 左上角大号显示 `It's HH:mm`。
+- **搜索框** — 磨砂玻璃质感、圆角搜索条。
+  - 支持必应、谷歌、百度三种搜索引擎切换。
+  - 百度搜索联想词与历史搜索记录。
+  - 搜索结果在新标签页打开。
+- **网址导航** — 单列快捷导航卡片，支持拖动排序。
+  - 可在设置中增删改导航项。
+  - 仅显示文字 + 右侧低透明度箭头。
+- **设置按钮** — 左下角半透明设置按钮，可自定义：
+  - 默认搜索引擎
+  - 壁纸（本地图片 / 图片 URL）
+  - 网址导航
+- **扁平化 + 磨砂玻璃设计** — 统一圆角、半透明背景、柔和阴影。
 
-## 📸 Preview
+## 📸 预览
 
-> Replace `screenshot.png` with your own screenshot.
+> 将 `screenshot.png` 替换为你自己的截图。
 
 ![Kat-home Preview](./screenshot.png)
 
-## 🚀 Installation
+## 🚀 安装
 
-### Method 1: Load Unpacked (Recommended for testing)
+### 方式一：加载解压缩扩展（推荐测试用）
 
-1. Open Microsoft Edge and go to `edge://extensions/`.
-2. Turn on **Developer mode** in the bottom-left corner.
-3. Click **Load unpacked**.
-4. Select the project folder, e.g. `D:\aiwork\harness\home-index`.
-5. Open a new tab to see Kat-home.
+1. 打开 Microsoft Edge，地址栏输入 `edge://extensions/` 并回车。
+2. 开启左下角「**开发人员模式**」。
+3. 点击「**加载解压缩的扩展**」。
+4. 选择本项目文件夹，例如 `D:\aiwork\harness\home-index`。
+5. 打开新标签页即可使用 Kat-home。
 
-### Method 2: Install from `.crx`
+### 方式二：安装 `.crx` 包
 
-1. Go to `edge://extensions/`.
-2. Turn on **Developer mode**.
-3. Drag and drop the `Kat-home.crx` file into the page.
-4. Confirm the installation.
+1. 打开 Edge，访问 `edge://extensions/`。
+2. 开启「**开发人员模式**」。
+3. 将 `Kat-home.crx` 文件拖入该页面。
+4. 确认安装即可。
 
-> To build a `.crx` yourself, see [Build](#-build).
+> 如需自行打包 `.crx`，请参考下方的「打包」章节。
 
-## 🛠️ Build
+## 🛠️ 打包
 
-To package the extension into a `.crx` install file:
+1. 打开 Edge，访问 `edge://extensions/`。
+2. 开启「**开发人员模式**」。
+3. 点击「**打包扩展**」。
+4. 扩展根目录选择本项目文件夹。
+5. 第一次打包时「私钥」留空。
+6. Edge 会生成两个文件：
+   - `Kat-home.crx` — 安装包
+   - `Kat-home.pem` — 私钥文件（请妥善保存，后续更新需要用到）
 
-1. Open Edge and go to `edge://extensions/`.
-2. Turn on **Developer mode**.
-3. Click **Pack extension**.
-4. Select the extension root folder.
-5. Leave the private key field empty for the first build.
-6. Edge will generate two files:
-   - `Kat-home.crx` — the install package
-   - `Kat-home.pem` — the private key (keep this safe for future updates)
-
-## 📁 File Structure
+## 📁 文件结构
 
 ```
 Kat-home/
-├── manifest.json      # Extension manifest
-├── newtab.html        # New tab page markup
-├── styles.css         # Frosted-glass styles and layout
-├── script.js          # Clock, search, suggestions, settings logic
-├── icon128.png        # Extension icon
-└── README.md          # This file
+├── manifest.json      # 扩展清单
+├── newtab.html        # 新标签页 HTML
+├── styles.css         # 磨砂玻璃样式与布局
+├── script.js          # 时间、搜索、联想词、设置逻辑
+├── icon128.png        # 扩展图标
+├── favicon.png        # 标签页图标
+├── README.md          # 本文件
+└── RELEASE_NOTES.md   # 版本说明
 ```
 
-## 🔐 Permissions
+## 🔐 权限说明
 
-| Permission | Purpose |
-|------------|---------|
-| `storage` | Save your settings, wallpaper, navigation links, and recent searches locally. |
-| `host_permissions` for `*.baidu.com` | Fetch live search suggestions from Baidu. |
+| 权限 | 用途 |
+|------|------|
+| `storage` | 本地保存设置、壁纸、网址导航、历史搜索记录。 |
+| `host_permissions` for `*.baidu.com` | 从百度获取搜索联想词。 |
 
-No data is sent anywhere except search queries to the selected search engine and Baidu's suggestion API.
+除了搜索关键词会发送给所选搜索引擎和百度联想词接口外，不会上传任何其他数据。
 
-## 🎨 Customization
+## 🎨 自定义
 
-Click the green settings button in the bottom-left corner to:
+点击左下角设置按钮，可以：
 
-- Change the default search engine (Bing / Google / Baidu)
-- Set a custom wallpaper from your local disk or an image URL
-- Add, edit, or remove navigation links
+- 切换默认搜索引擎（必应 / 谷歌 / 百度）
+- 设置本地图片或图片 URL 作为壁纸
+- 添加、编辑、删除网址导航
 
-## 🧑‍💻 Development
+## 🧑‍💻 开发
 
-Kat-home is built with plain HTML, CSS, and JavaScript — no build step required. Just edit the files and reload the extension in `edge://extensions/`.
+Kat-home 使用原生 HTML、CSS、JavaScript 编写，无需构建步骤。直接修改文件后，在 `edge://extensions/` 中重新加载扩展即可看到效果。
 
-## 📄 License
+## 📝 更新日志
 
-MIT License — feel free to use, modify, and share.
+详见 [RELEASE_NOTES.md](./RELEASE_NOTES.md)。
 
----
+## 📄 许可证
 
-## 中文说明
-
-**Kat-home** 是一个适用于 Microsoft Edge 的磨砂玻璃风格新标签页扩展。
-
-### 主要功能
-
-- 左上角大字体时间显示 `It's HH:mm`
-- 磨砂玻璃搜索框，支持必应 / 谷歌 / 百度切换
-- 百度搜索联想词
-- 自定义网址导航
-- 自定义壁纸与默认搜索引擎
-
-### 安装方法
-
-1. 打开 Edge，访问 `edge://extensions/`
-2. 开启左下角「开发人员模式」
-3. 点击「加载解压缩的扩展」
-4. 选择本项目文件夹
-5. 打开新标签页即可使用
-
+MIT License — 可自由使用、修改和分享。
