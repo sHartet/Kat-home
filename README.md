@@ -3,7 +3,6 @@
 一个适用于 Microsoft Edge 的磨砂玻璃风格新标签页扩展。
 
 <img width="1914" height="987" alt="Snipaste_2026-08-27_21-39-15" src="https://github.com/user-attachments/assets/96293a19-cf57-4cc6-bc65-93b8b0cbb663" />
----
 
 ## ✨ 功能特性
 
